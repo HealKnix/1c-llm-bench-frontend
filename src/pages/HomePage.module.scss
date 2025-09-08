@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+.option {
+  &:hover,
+  &[data-hover] {
+    background-color: var(--color-blue-100);
+  }
+  &[data-selected] {
+    color: white;
+    background-color: var(--color-blue-500);
+  }
+}
