@@ -99,7 +99,7 @@ export default function HomePage() {
 
           <h1 className="mb-6 text-4xl font-bold text-balance md:text-6xl lg:text-7xl">
             <span className="from-primary via-secondary to-primary bg-gradient-to-r bg-clip-text text-transparent">
-              1C LLM Arena
+              1C LLM Bench
             </span>
           </h1>
 
@@ -329,7 +329,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl text-center">
           <div className="mb-4 flex items-center justify-center gap-2">
             <BrainIcon className="text-primary h-6 w-6" />
-            <span className="text-xl font-bold">1C LLM Arena</span>
+            <span className="text-xl font-bold">1C LLM Bench</span>
           </div>
           <p className="text-muted-foreground mb-4">
             Объективное сравнение языковых моделей для принятия обоснованных
