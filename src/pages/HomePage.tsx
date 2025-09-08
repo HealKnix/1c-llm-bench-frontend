@@ -127,7 +127,7 @@ export default function HomePage() {
           </div>
 
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
-            <Card className="border-primary/20 bg-card/50 py-6 backdrop-blur">
+            <Card className="border-primary bg-card/50 border-1 py-6 backdrop-blur">
               <CardBody className="p-6 text-center">
                 <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
                   <StarIcon className="text-primary h-6 w-6" />
@@ -139,7 +139,7 @@ export default function HomePage() {
               </CardBody>
             </Card>
 
-            <Card className="border-secondary/20 bg-card/50 py-6 backdrop-blur">
+            <Card className="border-secondary bg-card/50 border-1 py-6 backdrop-blur">
               <CardBody className="p-6 text-center">
                 <div className="bg-secondary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
                   <TrendingUpIcon className="text-secondary h-6 w-6" />
@@ -151,7 +151,7 @@ export default function HomePage() {
               </CardBody>
             </Card>
 
-            <Card className="border-primary/20 bg-card/50 py-6 backdrop-blur">
+            <Card className="border-primary bg-card/50 border-1 py-6 backdrop-blur">
               <CardBody className="p-6 text-center">
                 <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
                   <BrainIcon className="text-primary h-6 w-6" />
