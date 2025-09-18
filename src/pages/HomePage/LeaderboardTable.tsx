@@ -3,7 +3,6 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Chip,
   Table,
   TableBody,
   TableCell,
@@ -102,11 +101,9 @@ const LeaderboardTable = () => {
                 <TableHeader>
                   <TableColumn className="w-16 text-center">Ранг</TableColumn>
                   <TableColumn className="min-w-48">Модель</TableColumn>
-                  <TableColumn className="text-center">Рейтинг</TableColumn>
-                  <TableColumn className="text-center">Изменение</TableColumn>
-                  <TableColumn>Категория</TableColumn>
-                  <TableColumn>Стоимость</TableColumn>
                   <TableColumn>Точность</TableColumn>
+                  <TableColumn className="text-center">Изменение</TableColumn>
+                  <TableColumn>Стоимость</TableColumn>
                 </TableHeader>
                 <TableBody>
                   {models.map((model) => (
@@ -136,8 +133,11 @@ const LeaderboardTable = () => {
                         </div>
                         <div className="text-sm">{model.provider}</div>
                       </TableCell>
-                      <TableCell className="text-center">
-                        <div className="text-lg font-bold">{model.score}</div>
+                      <TableCell className="text-sm">
+                        <span className="text-medium font-medium">
+                          {model.accuracy}
+                        </span>
+                        <span className="text-[12px]">%</span>
                       </TableCell>
                       <TableCell className="text-center">
                         <div
@@ -160,16 +160,7 @@ const LeaderboardTable = () => {
                           </span>
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <Chip className="text-xs" color="secondary">
-                          {model.category}
-                        </Chip>
-                      </TableCell>
                       <TableCell className="text-sm">{model.cost}</TableCell>
-                      <TableCell className="text-sm">
-                        <span>{model.accuracy}</span>
-                        <span className="text-[12px]">%</span>
-                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

@@ -20,9 +20,7 @@ const HeroSection = () => {
           },
         )}
       >
-        {theme === 'dark' && (
-          <div className="bg-primary absolute inset-0 opacity-5" />
-        )}
+        <div className="bg-primary absolute inset-0 opacity-3" />
         <ThemeSwitch className="absolute top-3 right-4" />
         <div className="relative mx-auto max-w-6xl text-center">
           <div className="mb-6 flex justify-center">
@@ -36,7 +34,7 @@ const HeroSection = () => {
 
           <h1 className="mb-6 text-4xl font-bold text-balance md:text-6xl lg:text-7xl">
             <span className="from-primary via-secondary to-primary bg-gradient-to-r bg-clip-text text-transparent">
-              1C LLM Bench
+              1C LLM Бенчмарк
             </span>
           </h1>
 

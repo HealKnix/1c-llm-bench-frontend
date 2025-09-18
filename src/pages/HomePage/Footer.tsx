@@ -1,3 +1,4 @@
+import { Link, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
 import { BrainIcon } from 'lucide-react';
 
 const Footer = () => {
@@ -13,30 +14,42 @@ const Footer = () => {
           решений
         </p>
         <div className="text-default-foreground flex justify-center gap-6 text-sm">
-          <a
-            className="hover:text-primary transition-colors"
-            href="www.google.com"
+          <Link
+            className="text-foreground hover:text-primary transition-colors"
+            href="#"
           >
             О проекте
-          </a>
-          <a
-            className="hover:text-primary transition-colors"
-            href="www.google.com"
+          </Link>
+          <Link
+            className="text-foreground hover:text-primary transition-colors"
+            href="#"
           >
             Методология
-          </a>
-          <a
-            className="hover:text-primary transition-colors"
-            href="www.google.com"
-          >
-            API
-          </a>
-          <a
-            className="hover:text-primary transition-colors"
-            href="www.google.com"
+          </Link>
+          <Popover placement="top">
+            <PopoverTrigger>
+              <Link
+                href="#"
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                API
+              </Link>
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="px-1 py-2">
+                <div className="text-small font-bold">В разработке</div>
+                <div className="text-tiny">
+                  Возможно, добавим, а возможно, и нет...
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+          <Link
+            className="text-foreground hover:text-primary transition-colors"
+            href="#"
           >
             Контакты
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
