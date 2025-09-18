@@ -97,9 +97,6 @@ const FunctionOnWorkModal: FC<TFunctionOnWorkModal> = ({
               id="agreement"
               isSelected={isAgreed}
               onValueChange={setIsAgreed}
-              onChange={(e) => {
-                console.log(e.target);
-              }}
               classNames={{
                 base: cn(
                   'hover:bg-primary/5 data-[pressed=true]:bg-primary/5 items-center justify-start mt-0.5 transition-colors',
