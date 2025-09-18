@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Geist'),
+    url('Geist[wght].ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Geist Mono'),
+    url('GeistMono[wght].ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('JetBrains Mono'),
+    url('JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+}

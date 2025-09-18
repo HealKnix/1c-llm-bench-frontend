@@ -59,7 +59,7 @@ const models = [
     parameters: '405B',
     cost: 'Free',
     strengths: ['Open', 'Customizable', 'Privacy'],
-    accuracy: 88.76,
+    accuracy: 88.7,
   },
   {
     rank: 5,
@@ -95,14 +95,14 @@ const LeaderboardTable = () => {
               <Table
                 selectionMode="single"
                 classNames={{
-                  wrapper: 'shadow-none',
+                  wrapper: 'shadow-none font-mono',
                 }}
               >
                 <TableHeader>
                   <TableColumn className="w-16 text-center">Ранг</TableColumn>
+                  <TableColumn className="w-0">{''}</TableColumn>
                   <TableColumn className="min-w-48">Модель</TableColumn>
-                  <TableColumn>Точность</TableColumn>
-                  <TableColumn className="text-center">Изменение</TableColumn>
+                  <TableColumn>Точность (%)</TableColumn>
                   <TableColumn>Стоимость</TableColumn>
                 </TableHeader>
                 <TableBody>
@@ -127,19 +127,8 @@ const LeaderboardTable = () => {
                           {model.rank}
                         </div>
                       </TableCell>
+
                       <TableCell>
-                        <div className="text-foreground font-semibold">
-                          {model.name}
-                        </div>
-                        <div className="text-sm">{model.provider}</div>
-                      </TableCell>
-                      <TableCell className="text-sm">
-                        <span className="text-medium font-medium">
-                          {model.accuracy}
-                        </span>
-                        <span className="text-[12px]">%</span>
-                      </TableCell>
-                      <TableCell className="text-center">
                         <div
                           className={`flex items-center justify-center gap-1 ${
                             model.change > 0
@@ -160,6 +149,20 @@ const LeaderboardTable = () => {
                           </span>
                         </div>
                       </TableCell>
+
+                      <TableCell>
+                        <div className="text-foreground text-medium font-semibold">
+                          {model.name}
+                        </div>
+                        <div className="text-foreground/50 text-sm">
+                          {model.provider}
+                        </div>
+                      </TableCell>
+
+                      <TableCell className="text-sm">
+                        <span className="text-medium">{model.accuracy}</span>
+                      </TableCell>
+
                       <TableCell className="text-sm">{model.cost}</TableCell>
                     </TableRow>
                   ))}
