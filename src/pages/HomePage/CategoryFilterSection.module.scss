@@ -3,7 +3,11 @@
 .option {
   &:hover,
   &[data-hover] {
-    background-color: var(--color-blue-100);
+    background-color: color-mix(
+      in srgb,
+      var(--color-blue-500) 15%,
+      transparent 0%
+    );
   }
   &[data-selected] {
     color: white;

@@ -1,12 +1,10 @@
-import * as React from 'react';
+import { FC, SVGProps } from 'react';
 
-import { IconSvgProps } from '@/types';
+type IconSvgProps = SVGProps<SVGSVGElement> & {
+  size?: number;
+};
 
-export const Logo: React.FC<IconSvgProps> = ({
-  size = 36,
-  height,
-  ...props
-}) => (
+export const Logo: FC<IconSvgProps> = ({ size = 36, height, ...props }) => (
   <svg
     fill="none"
     height={size || height}
@@ -23,7 +21,7 @@ export const Logo: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const DiscordIcon: React.FC<IconSvgProps> = ({
+export const DiscordIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -44,7 +42,7 @@ export const DiscordIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const TwitterIcon: React.FC<IconSvgProps> = ({
+export const TwitterIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -65,7 +63,7 @@ export const TwitterIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const GithubIcon: React.FC<IconSvgProps> = ({
+export const GithubIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
