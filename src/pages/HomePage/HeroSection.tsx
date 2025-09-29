@@ -62,7 +62,7 @@ const HeroSection = () => {
 
         <h1 className="mb-6 text-4xl font-bold text-balance md:text-6xl lg:text-7xl">
           <span className="from-primary via-secondary to-primary bg-gradient-to-r bg-clip-text text-transparent">
-            1C LLM Бенчмарк
+            1С LLM Бенчмарк
           </span>
         </h1>
 
