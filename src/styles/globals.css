@@ -6,6 +6,36 @@
 
 @import '../assets/fonts';
 
+:root {
+  --font-mono:
+    'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+* {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #006fee11;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #006fee33;
+    border-radius: 999px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: #006fee66;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #006feeaa;
+  }
+}
+
 html {
   font-family: 'Geist', sans-serif;
   scroll-behavior: smooth;
@@ -13,6 +43,6 @@ html {
 
 @layer utilities {
   .font-mono {
-    font-family: 'JetBrains Mono';
+    font-family: 'Geist Mono';
   }
 }

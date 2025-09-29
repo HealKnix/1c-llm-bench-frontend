@@ -1,4 +1,5 @@
 import CategoryFilterSection from './CategoryFilterSection';
+import ContactSection from './ContactSection';
 import Footer from './Footer';
 import HeroSection from './HeroSection';
 import LeaderboardTable from './LeaderboardTable';
@@ -11,6 +12,7 @@ export default function HomePage() {
       <HeroSection />
       <CategoryFilterSection categories={categories} />
       <LeaderboardTable />
+      <ContactSection />
       <Footer />
     </div>
   );

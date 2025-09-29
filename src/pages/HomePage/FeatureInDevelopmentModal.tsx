@@ -10,13 +10,16 @@ import {
   ModalFooter,
   ModalHeader,
   Textarea,
-  useDisclosure,
 } from '@heroui/react';
 import { FC, useState } from 'react';
 
-type TFunctionOnWorkModal = ReturnType<typeof useDisclosure>;
+interface IFunctionOnWorkModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onOpenChange: () => void;
+}
 
-const FunctionOnWorkModal: FC<TFunctionOnWorkModal> = ({
+const FunctionOnWorkModal: FC<IFunctionOnWorkModalProps> = ({
   isOpen,
   onClose,
   onOpenChange,
@@ -73,7 +76,10 @@ const FunctionOnWorkModal: FC<TFunctionOnWorkModal> = ({
                 placeholder="your@email.com"
                 value={formData.email}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, email: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    email: e.target.value,
+                  }))
                 }
                 required
               />

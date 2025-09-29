@@ -1,6 +1,6 @@
-import type { NavigateOptions } from 'react-router-dom';
-
 import { HeroUIProvider } from '@heroui/system';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import type { NavigateOptions } from 'react-router-dom';
 import { useHref, useNavigate } from 'react-router-dom';
 
 declare module '@react-types/shared' {
@@ -9,12 +9,17 @@ declare module '@react-types/shared' {
   }
 }
 
+// Создаем экземпляр QueryClient
+const queryClient = new QueryClient();
+
 export function Provider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
   return (
-    <HeroUIProvider navigate={navigate} useHref={useHref}>
-      {children}
-    </HeroUIProvider>
+    <QueryClientProvider client={queryClient}>
+      <HeroUIProvider navigate={navigate} useHref={useHref}>
+        {children}
+      </HeroUIProvider>
+    </QueryClientProvider>
   );
 }
