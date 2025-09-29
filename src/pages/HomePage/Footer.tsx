@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="mx-auto max-w-6xl text-center">
         <div className="mb-4 flex items-center justify-center gap-2">
           <BrainIcon className="text-primary h-6 w-6" />
-          <span className="text-xl font-bold">1C LLM Bench</span>
+          <span className="text-xl font-bold">1С LLM Бенчмарк</span>
         </div>
         <p className="text-default-foreground mb-4">
           Объективное сравнение языковых моделей для принятия обоснованных
