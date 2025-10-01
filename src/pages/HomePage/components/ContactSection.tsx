@@ -114,7 +114,7 @@ const ContactSection = () => {
             return (
               <Card
                 key={channel.handle}
-                className="border-primary/10 bg-background/80 hover:border-primary/30 hover:shadow-primary/10 relative min-w-[350px] flex-1 overflow-hidden rounded-2xl border p-4 text-left shadow-md shadow-transparent backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="border-primary/10 bg-background/80 hover:border-primary/30 hover:shadow-primary/10 relative min-w-[350px] flex-1 overflow-hidden rounded-2xl border p-4 text-left shadow-transparent backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
                 <span
                   className={cn(

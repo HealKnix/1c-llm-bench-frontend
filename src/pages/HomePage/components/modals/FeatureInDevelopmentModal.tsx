@@ -1,3 +1,4 @@
+import { useFeatureInterest } from '@/context/FeatureInterestContext';
 import { cn } from '@/utils/cn';
 import {
   Button,
@@ -30,9 +31,18 @@ const FunctionOnWorkModal: FC<IFunctionOnWorkModalProps> = ({
     message: '',
   });
   const [isAgreed, setIsAgreed] = useState(false);
+  const { addEntry } = useFeatureInterest();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    };
+
+    addEntry(payload);
 
     setFormData({ name: '', email: '', message: '' });
     setIsAgreed(false);

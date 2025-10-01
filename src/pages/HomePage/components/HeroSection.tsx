@@ -1,4 +1,3 @@
-import { ThemeSwitch } from '@/components/theme-switch';
 import { cn } from '@/utils/cn';
 import { Button, useDisclosure } from '@heroui/react';
 import {
@@ -49,9 +48,7 @@ const HeroSection = () => {
         'dark:from-primary/25 dark:to-secondary/25 from-primary/10 to-secondary/10 via-background relative overflow-hidden bg-gradient-to-br px-4 py-20',
       )}
     >
-      <div className="bg-primary absolute inset-0 opacity-0 dark:opacity-3" />
-
-      <ThemeSwitch className="fixed top-3 right-4 z-50" />
+      <div className="bg-primary absolute inset-0 opacity-0 dark:opacity-5" />
 
       <div className="relative mx-auto max-w-6xl text-center">
         <div className="mb-6 flex justify-center">
@@ -100,7 +97,7 @@ const HeroSection = () => {
           {featureCards.map(({ title, description, icon: Icon, accent }) => (
             <div
               key={title}
-              className="group border-primary/10 bg-background/80 hover:border-primary/30 hover:shadow-primary/10 relative overflow-hidden rounded-2xl border p-6 text-left shadow-md shadow-transparent backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="group border-primary/10 bg-background/80 hover:border-primary/30 hover:shadow-primary/10 relative overflow-hidden rounded-2xl border p-6 text-left shadow-transparent backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div
                 className={cn(

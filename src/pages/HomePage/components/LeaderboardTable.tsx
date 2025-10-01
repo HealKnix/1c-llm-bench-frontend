@@ -213,7 +213,7 @@ const LeaderboardTable = () => {
                 selectedKeys={selectedKeys}
                 classNames={{
                   base: 'max-h-[600px]',
-                  th: 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-foreground/70 text-xs uppercase tracking-widest',
+                  th: 'bg-transparent text-foreground/70 text-xs uppercase tracking-widest',
                   td: 'text-sm',
                   tr: 'transition-colors duration-200 focus-visible:bg-primary/10',
                 }}

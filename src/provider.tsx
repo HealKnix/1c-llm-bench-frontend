@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import type { NavigateOptions } from 'react-router-dom';
 import { useHref, useNavigate } from 'react-router-dom';
 
+import { FeatureInterestProvider } from './context/FeatureInterestContext';
+
 declare module '@react-types/shared' {
   interface RouterConfig {
     routerOptions: NavigateOptions;
@@ -18,7 +20,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <HeroUIProvider navigate={navigate} useHref={useHref}>
-        {children}
+        <FeatureInterestProvider>{children}</FeatureInterestProvider>
       </HeroUIProvider>
     </QueryClientProvider>
   );
