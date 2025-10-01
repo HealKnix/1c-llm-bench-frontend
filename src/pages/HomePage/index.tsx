@@ -1,8 +1,8 @@
-import CategoryFilterSection from './CategoryFilterSection';
-import ContactSection from './ContactSection';
-import Footer from './Footer';
-import HeroSection from './HeroSection';
-import LeaderboardTable from './LeaderboardTable';
+import CategoryFilterSection from './components/CategoryFilterSection';
+import ContactSection from './components/ContactSection';
+import FooterSection from './components/Footer';
+import HeroSection from './components/HeroSection';
+import LeaderboardTable from './components/LeaderboardTable';
 
 const categories = ['BLEU', 'CodeBLEU', 'pass@k'];
 
@@ -13,7 +13,7 @@ export default function HomePage() {
       <CategoryFilterSection categories={categories} />
       <LeaderboardTable />
       <ContactSection />
-      <Footer />
+      <FooterSection />
     </div>
   );
 }

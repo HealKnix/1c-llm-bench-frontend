@@ -11,8 +11,8 @@ const CategoryFilterSection: FC<ICategoryFilterSectionProps> = ({
 }) => {
   return (
     <section
-      className="border-foreground-200 bg-muted/30 border-b px-4 py-8"
       id="leaderboard"
+      className="border-foreground-200 bg-muted/30 border-b px-4 py-8"
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">

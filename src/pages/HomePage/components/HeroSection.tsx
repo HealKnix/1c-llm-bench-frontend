@@ -10,7 +10,7 @@ import {
   TrendingUpIcon,
   ZapIcon,
 } from 'lucide-react';
-import FunctionOnWorkModal from './FeatureInDevelopmentModal';
+import FunctionOnWorkModal from './modals/FeatureInDevelopmentModal';
 
 const featureCards = [
   {
@@ -44,12 +44,15 @@ const HeroSection = () => {
 
   return (
     <section
+      id="top-section"
       className={cn(
         'dark:from-primary/25 dark:to-secondary/25 from-primary/10 to-secondary/10 via-background relative overflow-hidden bg-gradient-to-br px-4 py-20',
       )}
     >
       <div className="bg-primary absolute inset-0 opacity-0 dark:opacity-3" />
-      <ThemeSwitch className="absolute top-3 right-4" />
+
+      <ThemeSwitch className="fixed top-3 right-4 z-50" />
+
       <div className="relative mx-auto max-w-6xl text-center">
         <div className="mb-6 flex justify-center">
           <div className="bg-primary/10 border-primary/20 flex items-center gap-2 rounded-full border px-4 py-2">
@@ -90,7 +93,10 @@ const HeroSection = () => {
           </Button>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          id="feature-cards"
+        >
           {featureCards.map(({ title, description, icon: Icon, accent }) => (
             <div
               key={title}

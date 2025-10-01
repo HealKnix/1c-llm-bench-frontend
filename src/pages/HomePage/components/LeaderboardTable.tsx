@@ -4,7 +4,6 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Chip,
   Progress,
   Table,
   TableBody,
@@ -12,19 +11,14 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-  Tooltip,
   useDisclosure,
   type Selection,
 } from '@heroui/react';
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  GaugeIcon,
-  SparklesIcon,
-  TrendingUpIcon,
-} from 'lucide-react';
+import { ArrowDownIcon, ArrowUpIcon, TrendingUpIcon } from 'lucide-react';
 import { useMemo, useState, type Key } from 'react';
-import ModelDetailsModal, { ILeaderboardModel } from './ModelDetailsModal';
+import ModelDetailsModal, {
+  ILeaderboardModel,
+} from './modals/ModelDetailsModal';
 
 const models: ILeaderboardModel[] = [
   {
@@ -35,7 +29,10 @@ const models: ILeaderboardModel[] = [
     change: 12,
     category: 'General',
     parameters: '1.76T',
-    cost: '$0.010 / 1K токенов',
+    cost: {
+      input: '$0.010',
+      output: '$0.010',
+    },
     strengths: ['Reasoning', 'Code', 'Math'],
     accuracy: 94.3,
     latency: 210,
@@ -60,7 +57,10 @@ const models: ILeaderboardModel[] = [
     change: 8,
     category: 'General',
     parameters: '—',
-    cost: '$0.015 / 1K токенов',
+    cost: {
+      input: '$0.015',
+      output: '$0.015',
+    },
     strengths: ['Writing', 'Analysis', 'Safety'],
     accuracy: 92.8,
     latency: 260,
@@ -85,7 +85,10 @@ const models: ILeaderboardModel[] = [
     change: -5,
     category: 'General',
     parameters: '—',
-    cost: '$0.0125 / 1K токенов',
+    cost: {
+      input: '$0.0125',
+      output: '$0.0125',
+    },
     strengths: ['Multimodal', 'Search', 'Code'],
     accuracy: 91.2,
     latency: 320,
@@ -135,7 +138,10 @@ const models: ILeaderboardModel[] = [
     change: 3,
     category: 'Enterprise',
     parameters: '104B',
-    cost: '$0.020 / 1K токенов',
+    cost: {
+      input: '$0.020',
+      output: '$0.020',
+    },
     strengths: ['RAG', 'Enterprise', 'Multi-lang'],
     accuracy: 87.4,
     latency: 190,
@@ -187,7 +193,7 @@ const LeaderboardTable = () => {
   return (
     <section className="px-4 py-12">
       <div className="mx-auto max-w-6xl">
-        <Card className="border-primary/10 bg-background/80 dark:shadow-primary/20 shadow-primary/10 border shadow-lg backdrop-blur dark:shadow-2xl">
+        <Card className="border-primary/10 bg-background/80 dark:shadow-primary/20 shadow-primary/10 rounded-3xl border shadow-lg backdrop-blur dark:shadow-2xl">
           <CardHeader className="flex flex-col gap-3 p-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="text-foreground flex items-center gap-2 text-lg font-semibold">
@@ -198,20 +204,6 @@ const LeaderboardTable = () => {
                 Живая таблица для глубокой оценки моделей: метрики точности,
                 скорости, стоимости и сильных сторон.
               </span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Chip
-                className="border-secondary/40 bg-secondary/20 text-secondary-600 px-2 pl-3"
-                startContent={<SparklesIcon size={16} />}
-              >
-                Новые релизы
-              </Chip>
-              <Chip
-                className="border-secondary/40 bg-secondary/20 text-secondary-600 px-2 pl-3"
-                startContent={<GaugeIcon size={16} />}
-              >
-                Бенчмарки 1С
-              </Chip>
             </div>
           </CardHeader>
           <CardBody className="px-0 pb-0">
@@ -231,13 +223,14 @@ const LeaderboardTable = () => {
                   <TableColumn className="w-16 text-center">#</TableColumn>
                   <TableColumn className="w-28 text-center">Тренд</TableColumn>
                   <TableColumn className="min-w-64">Модель</TableColumn>
-                  <TableColumn className="min-w-40">
-                    Индекс качества
-                  </TableColumn>
                   <TableColumn className="min-w-40">Точность</TableColumn>
-                  <TableColumn className="min-w-40">Скорость</TableColumn>
-                  <TableColumn className="min-w-40 text-right">
-                    Стоимость
+                  <TableColumn className="min-w-40">Параметры</TableColumn>
+                  <TableColumn className="min-w-40 text-center">
+                    Стоимость, 1 млн токенов
+                    <div className="text-foreground-400 flex text-[10px] *:flex-1">
+                      <span className="text-left">Вход</span>
+                      <span className="text-right">Выход</span>
+                    </div>
                   </TableColumn>
                 </TableHeader>
                 <TableBody
@@ -307,21 +300,8 @@ const LeaderboardTable = () => {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <div className="flex flex-col gap-1">
-                          <span className="text-sm font-semibold">
-                            {model.score}
-                          </span>
-                          <Progress
-                            color="primary"
-                            value={(model.score / 1400) * 100}
-                            className="h-1.5"
-                            aria-label={`Индекс качества ${model.score}`}
-                          />
-                        </div>
-                      </TableCell>
-                      <TableCell>
                         <div className="flex flex-col gap-2">
-                          <span className="text-foreground/80 text-right text-xs font-medium">
+                          <span className="text-sm font-semibold">
                             {model.accuracy}%
                           </span>
                           <Progress
@@ -346,17 +326,29 @@ const LeaderboardTable = () => {
                               {model.throughput} req/мин
                             </span>
                           </span>
+                          <span>
+                            Параметры:{' '}
+                            <span className="text-foreground font-semibold">
+                              {model.parameters}
+                            </span>
+                          </span>
                         </div>
                       </TableCell>
-                      <TableCell className="text-right">
-                        <div className="text-sm font-medium">{model.cost}</div>
-                        <Tooltip
-                          content={`Параметры модели: ${model.parameters}`}
-                        >
-                          <span className="text-foreground/45 text-xs">
-                            {model.parameters}
-                          </span>
-                        </Tooltip>
+                      <TableCell className="flex *:flex-1">
+                        {model.cost === 'Self-hosted' ? (
+                          <div className="text-center text-sm font-medium">
+                            {model.cost}
+                          </div>
+                        ) : (
+                          <>
+                            <div className="text-left text-sm font-medium">
+                              {model.cost.input}
+                            </div>
+                            <div className="text-right text-sm font-medium">
+                              {model.cost.output}
+                            </div>
+                          </>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -382,14 +374,6 @@ const LeaderboardTable = () => {
                     <div className="mt-4 grid grid-cols-2 gap-4 font-mono text-sm sm:grid-cols-4">
                       <div className="border-primary/15 bg-background/80 rounded-xl border p-4">
                         <div className="text-foreground/60 text-xs uppercase">
-                          Индекс
-                        </div>
-                        <div className="text-foreground text-lg font-semibold">
-                          {selectedModel.score}
-                        </div>
-                      </div>
-                      <div className="border-primary/15 bg-background/80 rounded-xl border p-4">
-                        <div className="text-foreground/60 text-xs uppercase">
                           Точность
                         </div>
                         <div className="text-foreground text-lg font-semibold">
@@ -398,18 +382,39 @@ const LeaderboardTable = () => {
                       </div>
                       <div className="border-primary/15 bg-background/80 rounded-xl border p-4">
                         <div className="text-foreground/60 text-xs uppercase">
-                          Задержка
+                          Количество параметров
                         </div>
                         <div className="text-foreground text-lg font-semibold">
-                          {selectedModel.latency} мс
+                          {selectedModel.parameters}
                         </div>
                       </div>
                       <div className="border-primary/15 bg-background/80 rounded-xl border p-4">
                         <div className="text-foreground/60 text-xs uppercase">
-                          Стоимость
+                          Контекст
+                        </div>
+                        <div className="text-foreground flex flex-col text-lg font-semibold">
+                          <span className="text-sm">
+                            Задержка:{' '}
+                            <span className="text-foreground text-lg">
+                              {selectedModel.latency} мс
+                            </span>
+                          </span>
+                          <span className="text-sm">
+                            Поток:{' '}
+                            <span className="text-foreground text-lg">
+                              {selectedModel.throughput} req/мин
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                      <div className="border-primary/15 bg-background/80 rounded-xl border p-4">
+                        <div className="text-foreground/60 text-xs uppercase">
+                          Входная/Выходная стоимость
                         </div>
                         <div className="text-foreground text-lg font-semibold">
-                          {selectedModel.cost}
+                          {selectedModel.cost === 'Self-hosted'
+                            ? selectedModel.cost
+                            : `${selectedModel.cost.input} / ${selectedModel.cost.output}`}
                         </div>
                       </div>
                     </div>
@@ -420,7 +425,7 @@ const LeaderboardTable = () => {
                       size="lg"
                       onPress={() => handleRowAction(selectedModel.rank)}
                     >
-                      Построить сравнение
+                      Подробнее
                     </Button>
                     <Button variant="light" size="lg" className="text-primary">
                       Экспортировать метрики

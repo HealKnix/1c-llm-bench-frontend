@@ -28,19 +28,19 @@ const Footer = () => {
           решений
         </p>
         <div className="text-default-foreground flex justify-center gap-6 text-sm">
-          <Link
-            className="text-foreground hover:text-primary transition-colors"
-            href="#"
+          <a
+            className="text-foreground hover:text-primary text-[16px] transition-colors"
+            href="#top-section"
           >
             О проекте
-          </Link>
+          </a>
 
-          <Link
-            className="text-foreground hover:text-primary transition-colors"
-            href="#"
+          <a
+            className="text-foreground hover:text-primary text-[16px] transition-colors"
+            href="#feature-cards"
           >
             Методология
-          </Link>
+          </a>
 
           <Popover placement="top">
             <PopoverTrigger>

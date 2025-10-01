@@ -15,7 +15,6 @@ import {
   CheckCircle2 as CheckCircle2Icon,
   Copy as CopyIcon,
   Send as SendIcon,
-  SparklesIcon,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -39,8 +38,7 @@ const telegramChannels: TelegramChannel[] = [
     name: 'Валерий Бобров',
     handle: '@BobrovValeriy',
     url: 'https://t.me/BobrovValeriy',
-    image:
-      'https://cdn4.telesco.pe/file/ge1T6f8qhiYe12Fmh8QReGFRKowvRrljqtJG2bnqx36WnDy2IOumxVcAF3KOp_XdVOEMP31kNKhouodsyGxaO_Gu0it-CYTSJdFlIqd2d8_CK17xNM31MsBg78K1fQu7624RFa7u0jg4BSn_hLFtuoPX4fQL8lyZOv8SApaV6capzeFicBW6w1i3J43BeeatDmu0vTl1jO7c8Z3Whg3e0YYThfP_A2sxU055GsN12JZIaRe5NpBga2NgjRAnR43uD8FKjU92jgB5pnwQjHbYRM6M7p5CREu86rk5RNJ3MCojGOCZnggN_d2AVk9dPUww8O8wFVSXtotNHaM81Om38w.jpg',
+    image: './avatar_valeriy.jpg',
     role: 'Аналитик · Разработчик 1С · Практик внедрения LLM',
     description:
       'Квалифицированный разработчик ERP-систем. Внедряю новые технологии, разрабатываю процессы с использованием LLM. Разработка и тонкая настройка промптов',
@@ -54,8 +52,7 @@ const telegramChannels: TelegramChannel[] = [
     name: 'Даниил Михайлов',
     handle: '@healknix',
     url: 'https://t.me/healknix',
-    image:
-      'https://cdn4.telesco.pe/file/QPup4t3WVaTgziU68OoCmCpc7jRW_a-3beWiGy-RaBmWg4aNPv5P_O8Y3JYwXqw2lBLkGeN2hJhBBEo-CHKcRBbRQn9QnktTIbE6r8Yg_4uwVn04b2AaLo7Mh8UjdVUwiX6W0TnIiQOKLEPOyfOhKnrzZUuAxV4ozFg8Mk9SnxsT5S2T1IjU86bIFGayhGQ8XciiIQ5laDJU9-Vx-v-rjeml0ThdxKedKhMI-nGGZbupLVVbqVfIoReMClGHAaPoHVUtHpEaO31j3hcYI14Y9728_FiF7uGr26hP9dpynAts0lgR3QChpyov-ZfHTnbpMsslvG5N2Mf_wexIh88fdg.jpg',
+    image: './avatar_daniil.jpg',
     github: 'https://github.com/HealKnix',
     role: 'Web-Разработчик · Архитектор ИС',
     description:
@@ -103,18 +100,10 @@ const ContactSection = () => {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-3 text-center sm:text-left">
           <h2 className="text-foreground flex flex-wrap items-center gap-4 text-2xl font-semibold sm:text-3xl">
-            Контактная информация
+            Авторы проекта
           </h2>
-          <Chip
-            className="border-primary/30 bg-primary/15 text-primary mx-auto w-fit gap-1 border pl-3 text-xs font-semibold tracking-[0.1em] uppercase sm:mx-0"
-            startContent={<SparklesIcon size={16} className="text-primary" />}
-            variant="bordered"
-          >
-            Telegram проводники
-          </Chip>
           <p className="text-foreground/70 mx-auto max-w-3xl text-base sm:mx-0">
-            Личные Telegram-каналы идейного вдохновителя и разработчика данного
-            сайта
+            Следите за идеями и связывайтесь напрямую в Telegram
           </p>
         </div>
 
@@ -217,7 +206,7 @@ const ContactSection = () => {
                     <Button
                       size="sm"
                       color={isCopied ? 'success' : 'secondary'}
-                      variant={isCopied ? 'solid' : 'flat'}
+                      variant="flat"
                       startContent={
                         isCopied ? (
                           <CheckCircle2Icon size={16} />
@@ -227,7 +216,7 @@ const ContactSection = () => {
                       }
                       onPress={() => handleCopy(channel.handle)}
                     >
-                      {isCopied ? 'Готово!' : channel.handle}
+                      {channel.handle}
                     </Button>
                   </Tooltip>
                 </CardFooter>

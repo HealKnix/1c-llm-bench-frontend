@@ -24,7 +24,12 @@ export interface ILeaderboardModel {
   change: number;
   category: string;
   parameters: string;
-  cost: string;
+  cost:
+    | {
+        input: string;
+        output: string;
+      }
+    | 'Self-hosted';
   strengths: string[];
   accuracy: number;
   latency: number;
