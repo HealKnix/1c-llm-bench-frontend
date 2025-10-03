@@ -198,11 +198,10 @@ const LeaderboardTable = () => {
             <div>
               <div className="text-foreground flex items-center gap-2 text-lg font-semibold">
                 <TrendingUpIcon className="text-primary h-5 w-5" />
-                Лидеры LLM для 1С-сценариев
+                Лучшие LLM в разработке на 1С
               </div>
               <span className="text-foreground/70 text-sm">
-                Живая таблица для глубокой оценки моделей: метрики точности,
-                скорости, стоимости и сильных сторон.
+                Динамика качества генерации кода на 1С от разных LLM.
               </span>
             </div>
           </CardHeader>
@@ -224,7 +223,9 @@ const LeaderboardTable = () => {
                   <TableColumn className="w-28 text-center">Тренд</TableColumn>
                   <TableColumn className="min-w-64">Модель</TableColumn>
                   <TableColumn className="min-w-40">Точность</TableColumn>
-                  <TableColumn className="min-w-40">Параметры</TableColumn>
+                  <TableColumn className="min-w-40 text-center">
+                    Параметры
+                  </TableColumn>
                   <TableColumn className="min-w-40 text-center">
                     Стоимость, 1 млн токенов
                     <div className="text-foreground-400 flex text-[10px] *:flex-1">
@@ -313,41 +314,26 @@ const LeaderboardTable = () => {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <div className="text-foreground/70 flex flex-col gap-1 text-xs">
-                          <span>
-                            Задержка:{' '}
-                            <span className="text-foreground font-semibold">
-                              {model.latency} мс
-                            </span>
-                          </span>
-                          <span>
-                            Поток:{' '}
-                            <span className="text-foreground font-semibold">
-                              {model.throughput} req/мин
-                            </span>
-                          </span>
-                          <span>
-                            Параметры:{' '}
-                            <span className="text-foreground font-semibold">
-                              {model.parameters}
-                            </span>
+                        <div className="text-foreground/70 text-center text-sm">
+                          <span className="text-foreground font-semibold">
+                            {model.parameters}
                           </span>
                         </div>
                       </TableCell>
-                      <TableCell className="flex *:flex-1">
+                      <TableCell>
                         {model.cost === 'Self-hosted' ? (
                           <div className="text-center text-sm font-medium">
                             {model.cost}
                           </div>
                         ) : (
-                          <>
+                          <div className="flex *:flex-1">
                             <div className="text-left text-sm font-medium">
                               {model.cost.input}
                             </div>
                             <div className="text-right text-sm font-medium">
                               {model.cost.output}
                             </div>
-                          </>
+                          </div>
                         )}
                       </TableCell>
                     </TableRow>
